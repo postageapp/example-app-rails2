@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <%= stylesheet_link_tag 'main' %>
+    
+    <title>Rails example for PostageApp</title>
+  </heade>
+  <body>
+    <div class="content_wrap">
+      <div class="header">
+        <%= image_tag 'postageapp_rails.gif' %>
+        
+        <h1>Rails example for PostageApp<br/><%= link_to "http://postageapp.com/docs", '', :class=>"small", :target=>"_blank" %></h1>
+      </div>
+      <div class="content">
+        <% flash.each do |type, message| %>
+          <div class="flash_message <%=type.to_s%>">
+            <%= message %>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+      <div class="footer">
+        developed by THE WORKING GROUP
+      </div>
+    </div>
+  </body>
+</html>

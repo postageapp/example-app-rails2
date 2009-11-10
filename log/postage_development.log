@@ -1,0 +1,86 @@
+Sending Request [UID: 1257883163.88383 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{""=>{"name"=>nil}}}
+
+Received Response [UID: 1257883163.88383] 
+{"response"=>{"uid"=>"1257883163.88383", "status"=>"ok"}, "data"=>{"message"=>{"id"=>8991}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Failed to perform delivery with postage: 
+#<NoMethodError: undefined method `uid' for {"uid"=>"1257883163.88383", "status"=>"ok"}:HashWithIndifferentAccess>
+Sending Request [UID: 1257883550.88845 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>nil}}}
+
+Received Response [UID: 1257883550.88845] 
+{"response"=>{"uid"=>"1257883550.88845", "status"=>"ok"}, "data"=>{"message"=>{"id"=>8993}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257883832.42853 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>nil}}}
+
+Received Response [UID: 1257883832.42853] 
+{"response"=>{"uid"=>"1257883832.42853", "status"=>"ok"}, "data"=>{"message"=>{"id"=>8997}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257883891.98913 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>"my name"}}}
+
+Received Response [UID: 1257883891.98913] 
+{"response"=>{"uid"=>"1257883891.98913", "status"=>"ok"}, "data"=>{"message"=>{"id"=>8998}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257883948.38221 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>"my name"}}}
+
+Received Response [UID: 1257883948.38221] 
+{"response"=>{"uid"=>"1257883948.38221", "status"=>"ok"}, "data"=>{"message"=>{"id"=>8999}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257884027.96346 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>"my name"}}}
+
+Received Response [UID: 1257884027.96346] 
+{"response"=>{"uid"=>"1257884027.96346", "status"=>"ok"}, "data"=>{"message"=>{"id"=>9001}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257884092.69662 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>"Test"}}}
+
+Received Response [UID: 1257884092.69662] 
+{"response"=>{"uid"=>"1257884092.69662", "status"=>"ok"}, "data"=>{"message"=>{"id"=>9002}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257884109.15326 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>"Test"}}}
+
+Received Response [UID: 1257884109.15326] 
+{"response"=>{"uid"=>"1257884109.15326", "status"=>"ok"}, "data"=>{"message"=>{"id"=>9003}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257884159.21098 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>"Test"}}}
+
+Received Response [UID: 1257884159.21098] 
+{"response"=>{"uid"=>"1257884159.21098", "status"=>"ok"}, "data"=>{"message"=>{"id"=>9005}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257884178.59524 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>"Test"}}}
+
+Received Response [UID: 1257884178.59524] 
+{"response"=>{"uid"=>"1257884178.59524", "status"=>"ok"}, "data"=>{"message"=>{"id"=>9006}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257884188.26151 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>"Test"}}}
+
+Received Response [UID: 1257884188.26151] 
+{"response"=>{"uid"=>"1257884188.26151", "status"=>"ok"}, "data"=>{"message"=>{"id"=>9007}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257884204.72121 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>"Test"}}}
+
+Received Response [UID: 1257884204.72121] 
+{"response"=>{"uid"=>"1257884204.72121", "status"=>"ok"}, "data"=>{"message"=>{"id"=>9009}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257884255.33344 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>"aa"}}}
+
+Received Response [UID: 1257884255.33344] 
+{"response"=>{"uid"=>"1257884255.33344", "status"=>"ok"}, "data"=>{"message"=>{"id"=>9010}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+
+Sending Request [UID: 1257884290.21652 URL: http://api.postageapp.com/v.1.0/send_message.json] 
+{:headers=>{"Subject"=>"My name is {{name}}", "From"=>"somebody@somewhere.com", "Reply-to"=>"somebody@somewhere.com"}, :message=>{"text/html"=>"<p>Hi,<p><p>My name is <b>{{name}}</b> and this is a test.</p>", "text/plain"=>"Hi\r\nMy name is {{name}} and this is a test.\n"}, :recipients=>{"jack@twg.ca"=>{"name"=>"Jack"}}}
+
+Received Response [UID: 1257884290.21652] 
+{"response"=>{"uid"=>"1257884290.21652", "status"=>"ok"}, "data"=>{"message"=>{"id"=>9011}}, "api"=>{"version"=>"1.0", "key"=>"x0RqcKNgPffbQOrIk8FC3C2yumEMtW17"}}
+

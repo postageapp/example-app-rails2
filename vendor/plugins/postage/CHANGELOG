@@ -1,0 +1,16 @@
+-- 0.0.3
+  * rake postage:test sends a test message
+  * Postage.send_message method is a bit less awkward
+  
+-- 0.0.2
+  * Small changes to response handling.
+  * ActionMailer is overridden by default. All deliveries are handled by
+    Postage all the time.
+  * Ability to fully disable ActionMailer.
+  * Failed transmissions due to network connectivity, improper format
+    or PostageApp service going down are saved locally and can be resend
+    at any time via rake task.
+
+-- 0.0.1
+  * Plugin rewrite. Some core functionality thrown away with the promise
+    of speedy return.
