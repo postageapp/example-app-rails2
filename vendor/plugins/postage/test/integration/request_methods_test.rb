@@ -31,13 +31,14 @@ class RequestMethodsTest < Test::Unit::TestCase
     assert !response.data[:account].blank?
   end
   
-  def send_message
+  def test_send_message
     arguments = {
-      :message    => {  'text/plain' => 'plain text message',
+      :content    => {  'text/plain' => 'plain text message',
                         'text/html'  => 'html text message' },
-      :recipients => 'oleg@twg.test' 
+      :recipients => 'oleg@twg.test',
+      :headers    => { :subject => 'Plugin Test Message' }
     }
-    response = Postage::Request.new(:send_message, arguments)
+    response = Postage::Request.new(:send_message, arguments).call!
     assert response.success?
     assert !response.data.blank?
     assert !response.data[:message].blank?

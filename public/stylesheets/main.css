@@ -105,6 +105,9 @@ a:hover {
   float: left;;
   width: 350px;
 }
+.left_column p.warning{
+  color: #CF4819;
+}
 .left_column span.api_key{
   background: #33aa33;
   color: #fff;

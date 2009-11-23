@@ -1,7 +1,7 @@
 = Postage Plugin
 
 Author:: {The Working Group, Inc}[http://www.twg.ca/]
-Version:: 0.0.3
+Version:: 0.0.4
 Documentation:: http://postageapp.com/docs
 
 == Installation

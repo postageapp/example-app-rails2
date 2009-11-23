@@ -1,6 +1,6 @@
 module Postage
   
-  PLUGIN_VERSION  = '0.0.3'
+  PLUGIN_VERSION  = '0.0.4'
   API_VERSION     = '1.0'
   
   require 'logger'
@@ -76,7 +76,7 @@ module Postage
   # Sends a message to PostageApp service.
   # Accepts following parameters:
   #
-  #   :message -- a hash of content with mimetype as a key. Most common use:
+  #   :content -- a hash of content with mimetype as a key. Most common use:
   #     { 'text/plain' => 'html message content',
   #       'text/html'  => 'plain text content' }
   #     also takes a hash of attachments:
@@ -89,7 +89,7 @@ module Postage
   #       }
   #     }
   #
-  #   :template_name -- should match message template name that you have
+  #   :template -- should match message template name that you have
   #     defined in your PostageApp account. Think of it as a Rails template
   #     that wraps your message and outputs defined message variables.
   #

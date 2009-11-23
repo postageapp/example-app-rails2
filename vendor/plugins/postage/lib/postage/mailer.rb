@@ -46,7 +46,7 @@ module Postage::Mailer
       logger.info  "Sending mail via Postage..." unless logger.nil?
       
       response = Postage.send_message(
-        :message    => arguments[:parts],
+        :content    => arguments[:parts],
         :recipients => self.recipients,
         :headers    => arguments[:headers]
       )
@@ -65,7 +65,7 @@ module Postage::Mailer
 end
 
 ActionMailer::Base.send :include, Postage::Mailer
-ActionMailer::Base.delivery_method = :postage
+ActionMailer::Base.delivery_method = :postage if defined?(Rails) && !Rails.env.test?
 
 # Violent override of the default ActionMailer deliver! method
 # maybe there's a better way of doing this.
