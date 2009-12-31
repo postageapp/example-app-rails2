@@ -135,6 +135,16 @@ a:hover {
   width: 350px;
 }
 
+.right_column form label{
+  float: left;
+  width: 120px;
+}
+
+.right_column form p.radio label {
+  float: none;
+}
+
+
 /* --- Footer --- */
 
 .footer {

@@ -1,22 +1,30 @@
-# By default ActionMailer delivery methods are caught by Postage.
-# It makes it easy to convert without the need to interface with Postage
-# directly. However, if you contruct your calls manually (not that hard, 
-# check documentation) you can disable ActiveMailer on your app completely.
-# Like so:
-#   config.frameworks -= [ :action_mailer ]
+module Postage
+  require "action_mailer"
+  require 'base64'
 
-require 'base64'
+  class Mailer < ActionMailer::Base
+    self.delivery_method = :postage if defined?(Rails) && !Rails.env.test?
 
-module Postage::Mailer
-  
-  def self.included(base)
-    base.send(:include, InstanceMethods)
-  end
+    # Allows you to specify wich PostageApp template you want to use
+    def postageapp_template(template = nil)
+      if template.nil?
+        @postageapp_template
+      else
+        @postageapp_template = template
+      end
+    end
 
-  module InstanceMethods
-    
+    def postageapp_variables(variables = nil)
+      if variables.nil?
+        @postageapp_variables
+      else
+        @postageapp_variables = variables
+      end
+    end
+
+
+    # Delivers an email through PostageApp
     def perform_delivery_postage(mail)
-      
       arguments = {
         :headers => {
           'Subject' => self.subject, 
@@ -24,7 +32,7 @@ module Postage::Mailer
         }.merge(self.headers),
         :parts => { }
       }
-      
+    
       # Collect the parts
       if self.parts.blank?
         arguments[:parts][self.content_type] = self.body
@@ -42,44 +50,57 @@ module Postage::Mailer
           end
         end
       end
-      
+    
       logger.info  "Sending mail via Postage..." unless logger.nil?
-      
-      response = Postage.send_message(
+    
+      api_params = {
         :content    => arguments[:parts],
         :recipients => self.recipients,
         :headers    => arguments[:headers]
-      )
-      
+      }
+      api_params[:template] = postageapp_template unless postageapp_template.blank?
+      api_params[:variables] = postageapp_variables unless postageapp_variables.blank?
+      response = Postage.send_message(api_params)
+    
       unless logger.nil?
         logger.info  "Mail successfully sent. Check postage_#{Rails.env}.log for more details. UID: #{response.response[:uid]}"
       end
-      
+    
       return response
-      
+    
     rescue => e
       Postage.log.error "Failed to perform delivery with postage: \n#{e.inspect}"
       raise e
     end
-  end
-end
+  
+  
+  
+  
+    # Violent override of the default ActionMailer deliver! method
+    # So we can return the response from the api call
+    def deliver!(mail = @mail)
+      raise "no mail object available for delivery!" unless mail
 
-ActionMailer::Base.send :include, Postage::Mailer
-ActionMailer::Base.delivery_method = :postage if defined?(Rails) && !Rails.env.test?
-
-# Violent override of the default ActionMailer deliver! method
-# maybe there's a better way of doing this.
-class ActionMailer::Base
-  def deliver!(mail = @mail)
-    raise "no mail object available for delivery!" unless mail
-    
-    begin
-      response = __send__("perform_delivery_#{delivery_method}", mail) if perform_deliveries
-    rescue Exception => e  # Net::SMTP errors or sendmail pipe errors
-      raise e if raise_delivery_errors
+      begin
+        response = __send__("perform_delivery_#{delivery_method}", mail) if perform_deliveries
+      rescue Exception => e  # Net::SMTP errors or sendmail pipe errors
+        raise e if raise_delivery_errors
+      end
+      # this is the key overide. Instead of returning somewhat useless TMail object, we are more
+      # interested in the PostageApp's response
+      return response
     end
-    # this is the key overide. Instead of returning somewhat useless TMail object, we are more
-    # interested in the PostageApp's response
-    return response
+  
+  
+    # Don't render any template if the file is not there
+    def render_message(method_name, body)
+      case method_name
+      when ActionView::ReloadableTemplate 
+        super if File.exists?(method_name.relative_path).to_yaml
+      else
+        super if File.exists?(method_name)
+      end
+    end
+  
   end
 end

@@ -21,12 +21,10 @@
     <p><label>{{name}} variable:</label> <%= text_field_tag :variable %></p>
     <p>
       <label>Plain text content:</label>
-      <br/>
       <%=text_area_tag :plain_text, "Hi\nMy name is {{name}} and this is a test.", :cols => 40, :rows => 5 %>
     </p>
     <p>
       <label>HTML content:</label> 
-      <br/>
       <%= text_area_tag :html, "<p>Hi,<p>\n<p>My name is <b>{{name}}</b> and this is a test.</p>", :cols => 40, :rows => 5 %>
     </p>
     <p><label>&nbsp;</label><%= submit_tag "Send message" %></p>

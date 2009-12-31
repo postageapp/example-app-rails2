@@ -1,4 +1,4 @@
-class UserMailer < ActionMailer::Base
+class UserMailer < Postage::Mailer
   
   def message(params)
     recipients params[:email] => {'name' => params[:variable]}
