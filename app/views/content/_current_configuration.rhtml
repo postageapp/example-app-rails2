@@ -1,5 +1,6 @@
 <% if Postage.api_key.blank? || Postage.api_key == 'ENTER YOUR API KEY HERE' %>
   <p class="warning">
+    <%= image_tag 'bullet_error.png'%>
     Before sending a message you'll need to add your API key to  config/initializers/postage.rb 
     <br/>and restart your server.</p>
 <% else %>

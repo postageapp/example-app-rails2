@@ -3,7 +3,7 @@
 <div class="left_column">
   <%= render :partial => 'current_configuration' %>
   <p>
-    Enter a subject, your email address and a value for the {{name}} variable.
+    Enter a subject, your email address and a value for the <span class="variable">{{name}}</span> variable.
   </p>
   <% unless @result.blank? %>
     <div class="response">
@@ -18,7 +18,7 @@
   <% form_for :user, :url => home_path do |f| %>
     <p><label>Subject:</label> <%= text_field_tag :subject, 'My name is {{name}}' %></p>
     <p><label>My email address:</label> <%= text_field_tag :email %></p>
-    <p><label>{{name}} variable:</label> <%= text_field_tag :variable %></p>
+    <p><label><span class="variable">{{name}}</span> variable:</label> <%= text_field_tag :variable %></p>
     <p>
       <label>Plain text content:</label>
       <%=text_area_tag :plain_text, "Hi\nMy name is {{name}} and this is a test.", :cols => 40, :rows => 5 %>
