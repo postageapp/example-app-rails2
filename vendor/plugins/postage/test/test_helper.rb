@@ -1,28 +1,21 @@
-ENV["RAILS_ENV"] = "plugin_test"
-
 require 'rubygems'
 require 'test/unit'
-
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-
-require 'active_support'
-require 'action_mailer'
-require 'redgreen' unless ENV['TM_FILEPATH']
-require 'yaml'
-
 require 'postage'
+
+require 'redgreen' unless ENV['TM_FILEPATH']
 
 class Test::Unit::TestCase
   
+  # Most of the tests are hitting actual PostageApp application
+  # Thus we need configuration that works
   def setup
-    # setting up initial plugin settings
+    # resetting postage configs
     Postage.configure do |config|
       config.api_key            = '1234567890abcdef'
-      config.api_version        = '1.0'
       config.url                = 'http://api.postageapp.local'
-      config.recipient_override = 'oleg@twg.test'
-      config.environments       = ['production', 'staging', 'plugin_test']
+      config.recipient_override = nil
+      config.logger = Logger.new("#{File.expand_path('../tmp', File.dirname(__FILE__))}/postage_test.log")
+      config.failed_calls_path = File.expand_path('../tmp', File.dirname(__FILE__))
     end
   end
   

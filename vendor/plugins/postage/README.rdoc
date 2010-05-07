@@ -1,7 +1,7 @@
 = Postage Plugin
 
 Author:: {The Working Group, Inc}[http://www.twg.ca/]
-Version:: 0.0.4
+Version:: 1.0.1
 Documentation:: http://postageapp.com/docs
 
 == Installation
@@ -27,6 +27,15 @@ To test that the installation succeeded and that the API key is valid, run:
   % rake postage:test
 
 == Usage
+
+<b>Note:</b> To quickly convert your existing mailers make sure that they 
+inherit from Postage::Mailer instead of ActionMailer::Base like so:
+
+  class MyNotifier < Postage::Mailer
+    def signup_notification(recipient)
+      # ...
+    end
+  end
 
 Please check documentation at http://postageapp.com/docs/rails
 

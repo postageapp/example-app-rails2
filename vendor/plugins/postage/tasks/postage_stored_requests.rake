@@ -34,7 +34,6 @@ namespace :postage do
         end
       end
     end
-    
   end
 end
 
@@ -43,5 +42,5 @@ def list_of_files
 end
 
 def file_path
-  @file_path ||= Postage.stored_failed_requests_path
+  @file_path ||= Postage.failed_calls_path
 end

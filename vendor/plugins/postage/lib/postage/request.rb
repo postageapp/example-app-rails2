@@ -1,6 +1,13 @@
-# Postage::Request.api_method maps to the possible actions on the PostageApp
-# current list is: get_method_list, get_project_info, send_message
-
+# Your standard wrapper for API calls to PostageApp
+# 
+# Example:
+# 
+#   request = Postage::Request.new(:api_method_name, :some => 'options')
+#   response = request.call # sets up a call and grabs a response from PostageApp
+# 
+# Failed requests (type of which is defined in Postage.failed_calls array) are stored
+# on local disk and are resent with the next successful transmission.
+#
 class Postage::Request
   
   require 'httparty'
@@ -24,7 +31,7 @@ class Postage::Request
   end
   
   def call_url
-    "#{Postage.url}/v.#{Postage.api_version}/#{self.api_method}.json"
+    "#{Postage.url}/v.#{Postage::API_VERSION}/#{self.api_method}.json"
   end
   
   def uid
@@ -33,14 +40,8 @@ class Postage::Request
   
   # Returns a json response as recieved from the PostageApp server
   # Upon internal failure nil is returned
-  def call!(call_url = self.call_url, arguments = self.arguments)
-    Postage.log.info "Sending Request [UID: #{self.uid} URL: #{call_url}] \n#{arguments.inspect}\n"
-    
-    # aborting if we are not supposed to contact PostageApp
-    unless Postage.environments.include?(defined?(Rails) ? Rails.env : ENV['RAILS_ENV'])
-      Postage.log.info "Not contacting PostageApp server. Sending back test response."
-      return Postage::Response.test_response
-    end
+  def call(call_url = self.call_url, arguments = self.arguments, resending = false)
+    Postage.logger.info "Sending Request [UID: #{self.uid} URL: #{call_url}] \n#{arguments.inspect}\n"
     
     self.arguments[:uid]              = self.uid
     self.arguments[:plugin_version]   = Postage::PLUGIN_VERSION
@@ -48,36 +49,53 @@ class Postage::Request
     body = { :api_key => Postage.api_key, :arguments => arguments }.to_json
     
     Timeout::timeout(5) do
-      self.response = self.class.post( call_url, 
-        :headers  => HEADERS,
-        :body     => body
-      )
+      self.response = self.class.post( call_url, :headers => HEADERS, :body => body )
     end
     
-    Postage.log.info "Received Response [UID: #{self.uid}] \n#{self.response.inspect}\n"
+    Postage.logger.info "Received Response [UID: #{self.uid}] \n#{self.response.inspect}\n"
     
-    Postage::Response.new(self.response)
+    resend_failed_requests unless resending
+    return Postage::Response.new(self.response)
     
   rescue Timeout::Error, SocketError, Exception => e
-    Postage.log.error "Failure [UID: #{self.uid}] \n#{e.inspect}"
+    Postage.logger.error "Failure [UID: #{self.uid}] \n#{e.inspect}"
     
-    store_failed_request
-    
+    store_failed_request(e) unless resending 
     return nil # no response generated
   end
   
 protected
   
-  def store_failed_request
-    return unless Postage.stored_failed_requests.include?(self.api_method.to_s)
+  def store_failed_request(e)
+    return unless Postage.failed_calls.include?(self.api_method.to_s)
     
-    unless File.exists?(Postage.stored_failed_requests_path)
-      FileUtils.mkdir_p(Postage.stored_failed_requests_path)
-    end
+    # notification for hoptoad users
+    HoptoadNotifier.notify(e) if defined?(HoptoadNotifier)
     
-    open(File.join(Postage.stored_failed_requests_path, "#{self.uid}.yaml"), 'w') do |f|
+    # creating directory, unless if already exists
+    FileUtils.mkdir_p(Postage.failed_calls_path) unless File.exists?(Postage.failed_calls_path)
+    
+    open(File.join(Postage.failed_calls_path, "#{self.uid}.yaml"), 'w') do |f|
       f.write({:url => self.call_url, :arguments => self.arguments}.to_yaml)
     end
   end
   
+  def resend_failed_requests(limit = 5)
+    file_path = Postage.failed_calls_path
+    files = Dir.entries(file_path).select{|f| f.match /\.yaml$/}
+    return if files.empty?
+    
+    Postage.logger.info "-- Attempting to resend #{files[0...limit].size} previously failed requests"
+    files[0...limit].each do |file|
+      data = YAML::load_file(File.join(file_path, file))
+      if Postage::Request.new.call(data[:url], data[:arguments], true)
+        Postage.logger.info '-- Send was successful. Removing stored file.'
+        FileUtils.rm File.join(file_path, file)
+      else
+        Postage.logger.info '-- Failed to resend'
+      end
+    end
+  rescue Errno::ENOENT
+    # do nothing, we never had failed requests
+  end
 end

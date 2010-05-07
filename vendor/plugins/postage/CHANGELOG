@@ -1,3 +1,17 @@
+-- 1.0.1
+  * Fixed issue with Postage::Mailer ignoring recipient_override being ignored
+
+-- 1.0.0
+  * Better Mailer derived from ActionMailer
+  * Better testing suite
+  * Better documentation
+  * Postage::Response is derived from OpenStruct
+  * Failed Postage::Request is logged with Hoptoad (if it's installed)
+  * Failed Postage::Request is re-transmitted with the next successful one
+
+-- 0.0.4
+  * Small fixes and tweaks
+
 -- 0.0.3
   * rake postage:test sends a test message
   * Postage.send_message method is a bit less awkward

@@ -25,10 +25,12 @@ end
   desc 'Check current plugin configuration'
   task :current_config => :environment do
     config_accessors = [
-      [:api_key,            '               API Key: '],
-      [:api_version,        '           API Version: '],
-      [:url,                'PostageApp Service URL: '],
-      [:recipient_override, '    Recipient Override: ']
+      [:api_key,            '                    API Key: '],
+      [:url,                '     PostageApp Service URL: '],
+      [:recipient_override, '         Recipient Override: '],
+      [:failed_calls,       'Types of failed calls saved: '],
+      [:failed_calls_path,  '      Failed calls saved to: '],
+      [:logger,             '                     Logger: ']
     ]
     
     config_accessors.each do |k, v|
@@ -40,14 +42,14 @@ end
   task :test => :environment do 
     
     puts "Attempting to contact PostageApp..."
-    response = Postage::Request.new(:get_project_info).call!
+    response = Postage::Request.new(:get_project_info).call
     
     unless response.blank?
       
       if response.success?
-        project_name  = response.data[:project][:name]
-        project_url   = response.data[:project][:url]
-        user_emails   = response.data[:project][:users]
+        project_name  = response.data['project']['name']
+        project_url   = response.data['project']['url']
+        user_emails   = response.data['project']['users']
         
         puts %{
   Found Project:
@@ -122,7 +124,7 @@ def send_test_message(recipients)
     recipients_with_variables[email] = {'name' => name}
   end
   
-  Postage.send_message(
+  Postage.call(:send_message,
     :message => {
       'text/html'  => HTML_MESSAGE,
       'text/plain' => TEXT_MESSAGE
