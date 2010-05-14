@@ -130,6 +130,7 @@ span.variable {
 .left_column .response {
   border: solid #ddd 2px;
   padding: 5px;
+  overflow: auto;
 }
 .left_column .response p {
   font-size: 11px;
