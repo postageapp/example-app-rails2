@@ -1,3 +1,6 @@
+-- 1.0.2
+  * Defaulting to https
+  
 -- 1.0.1
   * Fixed issue with Postage::Mailer ignoring recipient_override being ignored
 

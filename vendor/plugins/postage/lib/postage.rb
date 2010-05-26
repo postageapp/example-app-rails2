@@ -30,7 +30,7 @@
 #
 module Postage
   
-  PLUGIN_VERSION  = '1.0.1'
+  PLUGIN_VERSION  = '1.0.2'
   API_VERSION     = '1.0'
   
   require 'postage/request'
@@ -48,7 +48,7 @@ module Postage
                   :failed_calls_path
     
     def url
-      @url ||= 'http://api.postageapp.com'
+      @url ||= 'https://api.postageapp.com'
     end
     
     def failed_calls
