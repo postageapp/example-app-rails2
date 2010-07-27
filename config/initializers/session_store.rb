@@ -5,8 +5,8 @@
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
-  :key         => '_postageapp-rails-example_session',
-  :secret      => '3f7a081728fb64a73a1938a1e6f0feb99a1e9ca85787d2574e597a2ea1e7e5f09c359ca7671088ecf416d73c645a20bbd9be38c459157bd8b357ef813017e366'
+  :key         => '_postageapp-rails2-example_session',
+  :secret      => 'e48c4b765d971eda6b367a8cb62da78dcc6e1d6bc21e7aca8dda2794019d1b50a23e4123a51b3f6dd64c64f91274c8cfdc7017b11589ee2a0dd6d38b045ee469'
 }
 
 # Use the database for sessions instead of the cookie-based default,

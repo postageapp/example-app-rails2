@@ -1,7 +1,0 @@
-= PostageApp: Rails example
- 
-Author:: {The Working Group, Inc}[http://www.theworkinggroup.ca]
-Version:: 1.0.0
-Documentation:: {http://postageapp.com/docs/rails}[http://postageapp.com/docs/rails]
- 
-This is a working Rails app that shows how to send mass emails through {PostageApp}[http://postageapp.com]
