@@ -5,8 +5,8 @@ version: !ruby/object:Gem::Version
   segments: 
   - 1
   - 0
-  - 2
-  version: 1.0.2
+  - 4
+  version: 1.0.4
 platform: ruby
 authors: 
 - Oleg Khabarov, The Working Group Inc
@@ -14,7 +14,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2010-07-26 00:00:00 -04:00
+date: 2010-07-27 00:00:00 -04:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
@@ -72,12 +72,14 @@ files:
 - lib/postageapp/mailer.rb
 - lib/postageapp/mailer/mailer_2.rb
 - lib/postageapp/mailer/mailer_3.rb
-- lib/postageapp/rails.rb
+- lib/postageapp/rails/rails.rb
+- lib/postageapp/rails/railtie.rb
 - lib/postageapp/request.rb
 - lib/postageapp/response.rb
 - lib/postageapp/utils.rb
 - lib/postageapp/version.rb
 - postageapp.gemspec
+- rails/init.rb
 - test/configuration_test.rb
 - test/failed_request_test.rb
 - test/helper.rb

@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{postageapp}
-  s.version = "1.0.2"
+  s.version = "1.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Oleg Khabarov, The Working Group Inc"]
-  s.date = %q{2010-07-26}
+  s.date = %q{2010-07-27}
   s.description = %q{Gem that interfaces with PostageApp.com service to send emails from web apps}
   s.email = %q{oleg@twg.ca}
   s.extra_rdoc_files = [
@@ -34,12 +34,14 @@ Gem::Specification.new do |s|
      "lib/postageapp/mailer.rb",
      "lib/postageapp/mailer/mailer_2.rb",
      "lib/postageapp/mailer/mailer_3.rb",
-     "lib/postageapp/rails.rb",
+     "lib/postageapp/rails/rails.rb",
+     "lib/postageapp/rails/railtie.rb",
      "lib/postageapp/request.rb",
      "lib/postageapp/response.rb",
      "lib/postageapp/utils.rb",
      "lib/postageapp/version.rb",
      "postageapp.gemspec",
+     "rails/init.rb",
      "test/configuration_test.rb",
      "test/failed_request_test.rb",
      "test/helper.rb",
