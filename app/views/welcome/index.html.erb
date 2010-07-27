@@ -1,0 +1,32 @@
+<div class='api_key'>
+  <% if @api_key %>
+    API KEY: <span><%= @api_key %></span>
+  <% else %>
+    Please insert your project API KEY in <span>/config/initializers/postageapp.rb<span>
+  <% end %>
+</div>
+
+<% if @response %>
+  <div class='response'>
+    <pre><%= @response.to_yaml %></pre>
+  </div>
+<% end%>
+
+<% form_tag root_path do %>
+  <label> Subject
+    <%= text_field_tag :subject, @subject %>
+  </label>
+  <label>To ( email address )
+    <%= text_field_tag :to, @to %>
+  </label>
+  <label> Name ( {{name}} variable )
+    <%= text_field_tag :variable, @variable %>
+  </label>
+  <label> HTML Content
+    <%= text_area_tag :html, @html %>
+  </label>
+  <label> Plain Text Content
+    <%= text_area_tag :text, @text %>
+  </label>
+  <%= submit_tag 'Send Message' %>
+<% end %>
