@@ -1,0 +1,148 @@
+--- !ruby/object:Gem::Specification 
+name: postageapp
+version: !ruby/object:Gem::Version 
+  prerelease: false
+  segments: 
+  - 1
+  - 0
+  - 2
+  version: 1.0.2
+platform: ruby
+authors: 
+- Oleg Khabarov, The Working Group Inc
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2010-07-26 00:00:00 -04:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: json
+  prerelease: false
+  requirement: &id001 !ruby/object:Gem::Requirement 
+    requirements: 
+    - - "="
+      - !ruby/object:Gem::Version 
+        segments: 
+        - 1
+        - 2
+        - 4
+        version: 1.2.4
+  type: :runtime
+  version_requirements: *id001
+- !ruby/object:Gem::Dependency 
+  name: mocha
+  prerelease: false
+  requirement: &id002 !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        segments: 
+        - 0
+        - 9
+        - 8
+        version: 0.9.8
+  type: :development
+  version_requirements: *id002
+description: Gem that interfaces with PostageApp.com service to send emails from web apps
+email: oleg@twg.ca
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- LICENSE
+- README.md
+files: 
+- .document
+- .gitignore
+- LICENSE
+- README.md
+- Rakefile
+- VERSION
+- generators/postageapp/postageapp_generator.rb
+- generators/postageapp/templates/initializer.rb
+- generators/postageapp/templates/postageapp_tasks.rake
+- lib/generators/postageapp/postageapp_generator.rb
+- lib/postageapp.rb
+- lib/postageapp/configuration.rb
+- lib/postageapp/failed_request.rb
+- lib/postageapp/logger.rb
+- lib/postageapp/mailer.rb
+- lib/postageapp/mailer/mailer_2.rb
+- lib/postageapp/mailer/mailer_3.rb
+- lib/postageapp/rails.rb
+- lib/postageapp/request.rb
+- lib/postageapp/response.rb
+- lib/postageapp/utils.rb
+- lib/postageapp/version.rb
+- postageapp.gemspec
+- test/configuration_test.rb
+- test/failed_request_test.rb
+- test/helper.rb
+- test/mailer/action_mailer_2/notifier.rb
+- test/mailer/action_mailer_2/notifier/with_body_and_attachment.erb
+- test/mailer/action_mailer_2/notifier/with_html_and_text_views.text.html.erb
+- test/mailer/action_mailer_2/notifier/with_html_and_text_views.text.plain.erb
+- test/mailer/action_mailer_2/notifier/with_simple_view.erb
+- test/mailer/action_mailer_2/notifier/with_text_only_view.text.plain.erb
+- test/mailer/action_mailer_3/notifier.rb
+- test/mailer/action_mailer_3/notifier/with_html_and_text_views.html.erb
+- test/mailer/action_mailer_3/notifier/with_html_and_text_views.text.erb
+- test/mailer/action_mailer_3/notifier/with_old_api.html.erb
+- test/mailer/action_mailer_3/notifier/with_old_api.text.erb
+- test/mailer/action_mailer_3/notifier/with_simple_view.erb
+- test/mailer/action_mailer_3/notifier/with_text_only_view.text.erb
+- test/mailer_2_test.rb
+- test/mailer_3_test.rb
+- test/mailer_helper_methods_test.rb
+- test/postageapp_test.rb
+- test/rails_initialization_test.rb
+- test/request_integration_test.rb
+- test/request_test.rb
+- test/response_test.rb
+has_rdoc: true
+homepage: http://github.com/theworkinggroup/postageapp-gem
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --charset=UTF-8
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      segments: 
+      - 0
+      version: "0"
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      segments: 
+      - 0
+      version: "0"
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.6
+signing_key: 
+specification_version: 3
+summary: Easier way to send email from web apps
+test_files: 
+- test/configuration_test.rb
+- test/failed_request_test.rb
+- test/helper.rb
+- test/mailer/action_mailer_2/notifier.rb
+- test/mailer/action_mailer_3/notifier.rb
+- test/mailer_2_test.rb
+- test/mailer_3_test.rb
+- test/mailer_helper_methods_test.rb
+- test/postageapp_test.rb
+- test/rails_initialization_test.rb
+- test/request_integration_test.rb
+- test/request_test.rb
+- test/response_test.rb
