@@ -11,3 +11,8 @@ Configuration
 2. Create a Project (optionally attach it to a mail server)
 3. Copy API KEY into /config/initializers/postageapp.rb
 4. Start the application
+
+Questions / Comments?
+---------------------
+
+Please visit [http://help.postageapp.com](http://help.postageapp.com)
