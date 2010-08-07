@@ -1,6 +1,6 @@
 require File.expand_path('../helper', __FILE__)
 
-class RequestIntegrationTest < Test::Unit::TestCase
+class LiveTest < Test::Unit::TestCase
   
   # Note: Need access to a live PostageApp.com account
   # See helper.rb to set host / api key
@@ -72,6 +72,17 @@ class RequestIntegrationTest < Test::Unit::TestCase
       response = request.send
       assert_equal 'PostageApp::Response', response.class.name
       assert_equal 'fail', response.status
+    end
+    
+    def test_deliver_with_custom_postage_variables
+      response = if ActionMailer::VERSION::MAJOR < 3
+        require File.expand_path('../mailer/action_mailer_2/notifier', __FILE__)
+        Notifier.deliver_with_custom_postage_variables
+      else
+        require File.expand_path('../mailer/action_mailer_3/notifier', __FILE__)
+        Notifier.with_custom_postage_variables.deliver
+      end
+      assert response.ok?
     end
     
   end
